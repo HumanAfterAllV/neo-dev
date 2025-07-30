@@ -1,26 +1,257 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-black: #141414;
+  --color-white: #FDF9F0;
+  --color-bone: #D7DBD2;
+  --color-orange-500: #FF6D38;
+  --color-blue-500: #478BFF;
+  --color-green-500: #53ff91;
+  --color-yellow-500: #FFC412;
+  --color-purple-500: #9355ff;
+  --color-gray-500: #444342;
+  --color-gray-700: #2f2f2f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  /* Hero Section -------------------------------------- */
+  .hero-section {
+    @apply relative w-screen h-svh p-6 flex items-center justify-center overflow-hidden;
+    background-color: var(--color-bone);
+    color: #141414;
   }
+
+  .hero {
+    @apply flex flex-col transition-colors duration-300 ease-in;
+  }
+
+  .hero-header {
+    @apply absolute left-1/2 top-[35%] flex flex-col gap-8 w-[60%] text-center;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+  }
+
+  .animated-icons {
+    @apply fixed bottom-4 left-4 right-4 flex items-center gap-4 z-20;
+    will-change: transform;
+  }
+
+  .animated-icon {
+    @apply flex-1 aspect-square;
+    will-change: transform;
+  }
+
+  .animated-text {
+    @apply relative max-w-[1000px] text-center font-bold text-[clamp(2rem,5vw,4rem)] leading-none text-black;
+  }
+
+  .text-segment {
+    @apply opacity-0;
+  }
+
+  .placeholder-icon {
+    @apply mt-[-10px] w-[60px] h-[60px] inline-block align-middle;
+    will-change: transform;
+    visibility: hidden;
+  }
+
+  /* Home Section -------------------------------------- */
+
+  .home-section {
+    position: relative;
+    background-color: #e3e3db;
+    width: 100vw;
+    height: 100svh;
+    padding: 2em !important;
+    overflow: hidden;
+  }
+
+  .copy-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 2rem;
+  }
+
+  .copy-container h1 {
+    width: 70%;
+    color: #141414;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .hero .copy-container {
+    background: #FF6D38;
+  }
+
+  .cta .copy-container {
+    background: #53ff91;
+  }
+
+  .outro .copy-container {
+    background: #9355ff;
+  }
+
+  .about .copy-container,
+  .features .copy-container {
+    border: 0.15rem dashed rgb(60, 60, 60);
+  }
+
+  .anime-text {
+    width: 60%;
+  }
+
+  .anime-text-paragraph {
+    color: #141414;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .anime-text .word {
+    display: inline-block !important;
+    position: relative;
+    margin-right: 0.2rem !important;
+    margin-bottom: 0.2rem !important;
+    padding: 0.1rem 0.2rem !important;
+    border-radius: 2rem;
+    will-change: background-color, opacity;
+  }
+
+  .anime-text .word.keyword-wrapper {
+    margin: 0 0.4rem 0.2rem 0.2rem;
+  }
+
+  .anime-text .word span {
+    position: relative;
+  }
+
+  .anime-text .word span.keyword {
+    border-radius: 2rem;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0.1rem 0 !important;
+    color: #141414;
+  }
+
+  .anime-text .word span.keyword::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 1rem);
+    height: calc(100% + 0.4rem);
+    background-color: #fff;
+    border-radius: 2rem;
+    z-index: -1;
+  }
+
+  .anime-text .word span.keyword.compartir::before,
+  .anime-text .word span.keyword.construcción::before,
+  .anime-text .word span.keyword.typescript::before {
+    background-color: #9355ff;
+  }
+
+  .anime-text .word span.keyword.living::before,
+  .anime-text .word span.keyword.blog::before,
+  .anime-text .word span.keyword.fullstack::before {
+    background-color: #FF6D38;
+  }
+
+  .anime-text .word span.keyword.construir::before,
+  .anime-text .word span.keyword.aprendizaje::before,
+  .anime-text .word span.keyword.simples::before {
+    background-color: #53ff91;
+  }
+
+  .anime-text .word,
+  .anime-text .word span {
+    opacity: 0;
+  }
+
+  @media (max-width: 1000px) {
+    .hero-title {
+      font-size: 12vw;
+      text-align: center;
+    }
+
+    .hero-paragraph {
+      font-size: 1.1rem;
+    }
+
+    .hero-header {
+      top: 45%;
+      width:100%;
+    }
+
+    .placeholder-icon {
+      margin-top: -4px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .copy-container h1 {
+    width: 90%;
+    font-size: 2rem;
+    }
+
+    .anime-text {
+      width: 90%;
+    }
+
+    .anime-text-paragraph {
+      font-size: 1.25rem;
+    }
+
+    .anime-text .word {
+      margin-right: 0.1rem;
+      margin-bottom: 0.15rem;
+      padding: 0.1rem 0.2rem;
+    }
+
+    .anime-text .word.keyword-wrapper {
+      margin: 0 0.2rem 0.1rem 0.1rem;
+    }
+
+    .nav-overlay .nav-items .nav-item p {
+      font-size: 1.5rem;
+    }
+
+    .nav-overlay .nav-footer {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-overlay .nav-footer-item:nth-child(1) .nav-footer-item-header {
+      justify-content: center;
+    }
+
+    .nav-overlay .nav-footer-item:nth-child(2) {
+      display: none;
+    }
+
+    .nav-overlay .nav-footer-item:nth-child(3) .nav-footer-item-header {
+      justify-content: center;
+    }
+    
+  }
+
+
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+
