@@ -32,13 +32,9 @@ export default function HeroSection(): React.JSX.Element {
 
             <section ref={heroSectionRef} className="hero hero-section">
                 <div ref={heroHeaderRef} className="hero-header">
-                    <h1 className="font-bold hero-title leading-[1] lg:text-[6vw] sm:text-[12vw] text-center">
-                        Fullstack <br />
-                        with Purpose.
+                    <h1 className="font-black font-barlow hero-title uppercase leading-[1] lg:text-[13vw] sm:text-[12vw] text-center">
+                        FULLSTACK
                     </h1>
-                    <p className="hero-paragraph">
-                        Creo experiencias, y en mi blog te cuento el cómo y el porqué.
-                    </p>
                 </div>
                 <div ref={animatedIconsRef} className="animated-icons">
                     {[1, 2, 3, 4, 5].map((i) => (
@@ -55,14 +51,14 @@ export default function HeroSection(): React.JSX.Element {
                 </div>
                 <h1 className="animated-text hero-title">
                     <div className="placeholder-icon"/>
-                    <span className="text-segment">Delve into coding</span>
+                    <span className="text-segment">Construyo</span>
                     <div className="placeholder-icon"/>
-                    <span className="text-segment">with Next.js</span>
-                    <span className="text-segment"> and TypeScript</span>
+                    <span className="text-segment">con Next.js</span>
+                    <span className="text-segment"> y Typescript</span>
                     <div className="placeholder-icon"/>
-                    <span className="text-segment">for modern web</span>
+                    <span className="text-segment">para el desarrollo</span>
                     <div className="placeholder-icon"/>
-                    <span className="text-segment">development</span>
+                    <span className="text-segment">web moderno.</span>
                     <div className="placeholder-icon"/>
                     <span className="text-segment">.</span>
                 </h1>

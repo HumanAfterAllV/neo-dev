@@ -149,10 +149,10 @@ export default function HeroScroll({
                     })
 
                     if (scaleProgress >= 0.5) {
-                        heroSection.style.background = "#E3E3DB";
+                        heroSection.style.background = "#f9f4eb";
                     }
                     else {
-                        heroSection.style.background = "#E3E3DB";
+                        heroSection.style.background = "#f9f4eb";
                     }
 
                     if (duplicateIcons.length > 0) {
@@ -197,7 +197,7 @@ export default function HeroScroll({
                         opacity: 0
                     })
 
-                    heroSection.style.background = "#E3E3DB";
+                    heroSection.style.background = "#f9f4eb";
 
                     const targetCenterY: number = window.innerHeight / 2;
                     const targetCenterX: number = window.innerWidth / 2;
@@ -283,7 +283,7 @@ export default function HeroScroll({
                         opacity: 0
                     });
 
-                    heroSection.style.backgroundColor = "#E3E3DB";
+                    heroSection.style.backgroundColor = "#f9f4eb";
 
                     gsap.set(animatedIcons, {
                         opacity: 0,

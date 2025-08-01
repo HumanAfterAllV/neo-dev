@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Mono, Barlow_Condensed, Host_Grotesk } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
+import Header from "@/components/layout/header/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const barlowFont = Barlow_Condensed({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-barlow",
+  display: "swap"
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmMonoFont = DM_Mono({
   subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-dm",
+  display: "swap"
 });
+
+const hostFont = Host_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-grotesk",
+  display: "swap",
+  style: "italic"
+})
 
 export const metadata: Metadata = {
   title: "Neo-Dev",
@@ -26,10 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`min-h-screen`}
+        className={`min-h-screen ${barlowFont.variable} ${dmMonoFont.variable} ${hostFont.variable}`}
         suppressHydrationWarning={true}
       >
         <LenisProvider/>
+        <Header/>
         {children}
       </body>
     </html>
