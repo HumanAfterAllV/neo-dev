@@ -1,11 +1,13 @@
+import Footer from "@/components/layout/footer/Footer";
 import HeroSection from "@/components/sections/hero/HeroSection";
-import HomeSection from "@/components/sections/home/HomeSection";
+import TextAnimationSection from "@/components/sections/text-animation/TextAnimationSection";
 
 export default function Page(): React.JSX.Element {
     return(
         <>
             <HeroSection/>
-            <HomeSection />
+            <TextAnimationSection />
+            <Footer/>
         </>
     )
 }

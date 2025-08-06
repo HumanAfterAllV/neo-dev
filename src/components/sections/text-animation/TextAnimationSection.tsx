@@ -6,8 +6,8 @@ import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function HomeSection(): React.JSX.Element {
-
+export default function TextAnimationSection(): React.JSX.Element {
+    
     useEffect(() => {
         const animeTextParagraphs: NodeListOf<Element> = document.querySelectorAll('.anime-text-paragraph');
         const animeTextContainer: NodeListOf<Element> = document.querySelectorAll('.animated-text-container');
@@ -159,11 +159,6 @@ export default function HomeSection(): React.JSX.Element {
 
     return (
         <>
-            <section className="home-section hero">
-                <div className="copy-container">
-                    <h1>Arquitectura, diseño y código en una misma mente.</h1>
-                </div>
-            </section>
             <section className="about home-section animated-text-container">
                 <div className="copy-container">
                     <div className="anime-text">
@@ -179,30 +174,6 @@ export default function HomeSection(): React.JSX.Element {
                     </div>
                 </div>
             </section>
-
-            <section className="cta home-section">
-                <div className="copy-container">
-                    <h1>
-                        Join Huebase now to create expressive interfaces
-                    </h1>
-                </div>
-            </section>
-
-            <section className="features home-section animated-text-container">
-                <div className="copy-container">
-                    <div className="anime-text">
-                        <p className="anime-text-paragraph">
-                            Este sitio es parte de mi aprendizaje. Lo construí con errores, redirecciones y hallazgos que me empujaron a seguir.
-                            Cada mejora tiene una razón detrás, y cada entrada del blog refleja eso.
-                        </p>
-                        <p className="anime-text-paragraph">
-                            Si algo de lo que escribo te sirve, entonces este proyecto ya tiene sentido.
-                            Compartir también es construir.
-                        </p>
-                    </div>
-                </div>
-            </section>
-            
         </>
     )
 }

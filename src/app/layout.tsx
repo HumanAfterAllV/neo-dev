@@ -23,7 +23,7 @@ const hostFont = Host_Grotesk({
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-grotesk",
   display: "swap",
-  style: "italic"
+  style: "normal"
 })
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`min-h-screen ${barlowFont.variable} ${dmMonoFont.variable} ${hostFont.variable}`}
+        className={`min-h-screen overflow-hidden ${barlowFont.variable} ${dmMonoFont.variable} ${hostFont.variable}`}
         suppressHydrationWarning={true}
       >
         <LenisProvider/>

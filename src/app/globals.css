@@ -4,8 +4,8 @@
   --color-black: #0a0a0a;
   --color-bg: #f9f4eb;
   --color-bg2: #efece5;
-  --base-secondary-dark: #686560;
-  --base-secondary-fade: rgba(7, 6, 6, 0.15);
+  --color-dark-500: #686560;
+  --color-fade-500: rgba(7, 6, 6, 0.15);
   --color-orange-500: #f2acac;
   --color-blue-500: #b1c1ef;
   --color-green-500: #b2e2b1;
@@ -42,7 +42,8 @@
 
 body {
   background-color: var(--color-bg);
-  font-family: "Grotesk";
+  font-family: var(--font-grotesk);
+  font-weight: 500;
   color: var(--color-black);
 }
 
@@ -61,7 +62,7 @@ body {
   }
 
   nav .logo {
-    padding: 0.5em 0.65em;
+    padding: 0.5em 0.65em !important;
     background-color: var(--color-black);
   }
 
@@ -71,7 +72,7 @@ body {
   }
 
   nav .menu-toggle-btn {
-    padding: 0.6em 0.65em 0.65em 0.65em;
+    padding: 0.6em 0.65em 0.65em 0.65em !important;
     background-color: var(--color-bg2);
     color: var(--color-black);
   }
@@ -107,7 +108,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100svh;
-    background-color: var(--color-bg2);
+    background-color: var(--color-black);
     overflow: hidden;
     pointer-events: none;
     opacity: 0;
@@ -282,7 +283,7 @@ body {
     font-size: 5rem;
     font-weight: 900;
     line-height: 1;
-    font-family: "Grotesk";
+    font-family: var(--font-grotesk);
   }
 
   .hero .copy-container {
@@ -297,10 +298,10 @@ body {
     background: var(--color-purple-500);
   }
 
-  .about .copy-container,
+ /*  .about .copy-container,
   .features .copy-container {
     border: 0.10rem dashed rgba(60, 60, 60, 0.209);
-  }
+  } */
 
   .anime-text {
     width: 60%;
@@ -379,75 +380,252 @@ body {
     opacity: 0;
   }
 
+  
+  
+  /* Footer -------------------------------------- */
+  
+  footer {
+    position: relative;
+    width: 100vw;
+    height: max-content;
+    overflow: hidden;
+    background-color: var(--color-black);
+    color: var(--color-bg);
+    padding: 8rem 5rem 4rem 5rem !important;
+  }
+  
+  footer .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.5rem;
+  }
+  
+  
+  footer .container > div {
+  display: flex;
+  gap: 2rem;
+  }
+  
+  footer .container .footer-col,
+  footer .container .footer-sub-col {
+  flex: 1;
+  }
+  
+  footer .footer-top {
+  display: flex;
+  gap: 2rem;
+  }
+  
+  footer .footer-top .footer-col:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  }
+  
+  footer .footer-top .footer-col:nth-child(1) p.mono {
+  color: var(--color-dark-500);
+  }
+  
+  footer .footer-email-row {
+  width: 75%;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  }
+  
+  footer .footer-email-row input {
+  flex: 1;
+  width: 100%;
+  font-family: var(--font-grotesk);
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--color-bg);
+  }
+  
+  footer .footer-email-row input::placeholder {
+  color: var(--color-dark-500);
+  opacity: 0.75;
+  }
+  
+  footer .footer-email-row button {
+  outline: none;
+  border: none;
+  color: var(--color-bg);
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  footer .footer-email-row button img {
+  width: 0.75rem;
+  object-fit: contain;
+  }
+  
+  footer .footer-email-row input {
+  border: none;
+  outline: none;
+  background: none;
+  }
+  
+  footer .footer-bottom {
+  padding: 4rem 0 10rem 0;
+  border-top: 1px dashed var(--color-fade-500);
+  }
+  
+  footer .footer-bottom .footer-col:nth-child(2) {
+  display: flex;
+  }
+  
+  footer .footer-logo {
+  width: 60px;
+  }
+  
+  footer .footer-bottom .footer-col:nth-child(2) p.mono {
+  margin-bottom: 2rem;
+  opacity: 0.25;
+  }
+  
+  footer .footer-copyright {
+  display: flex;
+  gap: 2rem;
+  }
+  
+  footer .footer-copyright .footer-col {
+  display: flex;
+  gap: 2rem;
+  }
+  
+  footer .footer-links,
+  footer .footer-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  }
+  
+  footer a {
+  color: var(--base-100);
+  }
+  
+  
   @media (max-width: 1000px) {
     .hero-title {
       font-size: 12vw;
       text-align: center;
     }
-
+  
     .hero-paragraph {
       font-size: 1.1rem;
     }
-
+  
     .hero-header {
       top: 45%;
       width:100%;
     }
-
+  
     .placeholder-icon {
       margin-top: -4px;
       width: 30px;
       height: 30px;
     }
-
+  
     .copy-container h1 {
     width: 90%;
     font-size: 2rem;
     }
-
+  
     .anime-text {
       width: 90%;
     }
-
+  
     .anime-text-paragraph {
       font-size: 1.25rem;
     }
-
+  
     .anime-text .word {
       margin-right: 0.1rem;
       margin-bottom: 0.15rem;
       padding: 0.1rem 0.2rem;
     }
-
+  
     .anime-text .word.keyword-wrapper {
       margin: 0 0.2rem 0.1rem 0.1rem;
     }
-
+  
     .nav-overlay .nav-items .nav-item p {
       font-size: 1.5rem;
     }
-
+  
     .nav-overlay .nav-footer {
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
-
+  
     .nav-overlay .nav-footer-item:nth-child(1) .nav-footer-item-header {
       justify-content: center;
     }
-
+  
     .nav-overlay .nav-footer-item:nth-child(2) {
       display: none;
     }
-
+  
     .nav-overlay .nav-footer-item:nth-child(3) .nav-footer-item-header {
       justify-content: center;
     }
+  
+      footer {
+    height: max-content;
+    padding-top: 8rem;
+  }
+  
+  footer .container .footer-top .footer-col:nth-child(2) {
+    display: none;
+  }
+  
+  footer .footer-email-row {
+    width: 100%;
+  }
+  
+  footer .footer-email-row input {
+    font-size: 2rem;
+  }
+  
+  footer .footer-email-row button {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  footer .footer-email-row button img {
+    width: 0.5rem;
+  }
+  
+  footer .container > div {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  footer .footer-bottom .footer-col:nth-child(2) {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  footer .footer-copyright .footer-col:nth-child(1) {
+    display: none;
+  }
+  
+  footer .footer-copyright .footer-col:nth-child(2) {
+    width: 100%;
+    flex-direction: column-reverse;
+    gap: 0.25rem;
+  }
+  
     
   }
+  
 
-
-}
-
-
+}  
