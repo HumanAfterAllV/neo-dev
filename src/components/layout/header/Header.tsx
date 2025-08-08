@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react"
+import { usePathname } from "next/navigation";
 
 import gsap from "gsap";
 
@@ -20,13 +21,53 @@ export default function Header(): React.JSX.Element {
     const scrollYRef = useRef(0);
     const isAnimatingRef = useRef(false);
 
+    const pathname = usePathname();
+
+    useEffect(()=> {
+        if(!isMenuOpen) return
+
+        const navOverlay = navOverlayRef.current;
+        const menuToggleBtn = menuToggleBtnRef.current;
+
+        if (navOverlay && menuToggleBtn) 
+        {
+            navOverlay.style.pointerEvents = "none";
+            menuToggleBtn.classList.remove("menu-open");
+
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.overflow = "";
+            document.body.style.width = "";
+            window.scrollTo(0, scrollYRef.current);
+
+            gsap.to(navOverlay, {
+                opacity: 0,
+                duration: 0.3,
+            });
+
+            gsap.to([...navItemsRef.current, "nav-footer-item-header", "nav-footer-item-copy"], {
+                y: "100%",
+                opacity: 0,
+                duration: 0.3,
+            });
+
+            gsap.to([openLabelRef.current, closeLabelRef.current], {
+                y: "0rem",
+                duration: 0.3,
+            });
+
+            setIsMenuOpen(false); // actualiza estado
+        }
+
+    },[pathname])
+
     useEffect(() => {
         const menuToggleBtn = menuToggleBtnRef.current;
         const navOverlay = navOverlayRef.current;
         const openLabel = openLabelRef.current;
         const closeLabel = closeLabelRef.current;
 
-        if (!menuToggleBtn || !navOverlay || !openLabel || !closeLabel) return;
+        if (!navOverlay || !menuToggleBtn || !document.body.contains(navOverlay)) return;
 
         const handleClick = () => {
             if (isAnimatingRef.current) {
@@ -49,12 +90,12 @@ export default function Header(): React.JSX.Element {
                 document.body.style.width = "100%";
     
                 gsap.to(openLabel, {
-                    y: "-1rem",
+                    y: "-1.6rem",
                     duration: 0.3,
                 });
     
                 gsap.to(closeLabel, {
-                    y: "-1rem",
+                    y: "-1.6rem",
                     duration: 0.3,
                 });
     
@@ -86,12 +127,12 @@ export default function Header(): React.JSX.Element {
                 window.scrollTo(0, scrollYRef.current);
     
                 gsap.to(openLabel, {
-                    y: "0",
+                    y: "0rem",
                     duration: 0.3,
                 });
     
                 gsap.to(closeLabel, {
-                    y: "0",
+                    y: "0rem",
                     duration: 0.3,
                 });
     

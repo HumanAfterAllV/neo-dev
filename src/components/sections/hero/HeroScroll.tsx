@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
-// Register GSAP plugins
+// Registrar plugin ScrollTrigger a GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroScroll({
@@ -20,9 +20,9 @@ export default function HeroScroll({
 
     useEffect(() => {
 
-        // Instance Lenis for smooth scrollin
+        const triggers: ScrollTrigger[] = [];
 
-        // Clean up on component unmount
+        // Limpieza y montaje de las variables externas
         const animatedIcons = animatedIconRef.current;
         const heroHeader = heroHeaderRef.current;
         const heroSection = heroSectionRef.current;
@@ -61,7 +61,7 @@ export default function HeroScroll({
         const duplicateIcons: HTMLDivElement[] = [];
  
         // Create scroll-triggered animations for each icon
-        ScrollTrigger.create({
+        const trigger = ScrollTrigger.create({
             trigger: heroSection,
             start: "top top",
             end: `+=${window.innerHeight * 8}px`,
@@ -325,7 +325,22 @@ export default function HeroScroll({
             }
         })
 
+        triggers.push(trigger);
+
         ScrollTrigger.refresh();
+        
+        return () => {
+            // Eliminar ScrollTriggers
+            
+            triggers.forEach(trigger => trigger.kill());
+            ScrollTrigger.refresh();
+
+            // Eliminar íconos duplicados si quedan en el DOM
+            const duplicates = document.querySelectorAll(".duplicate-icon");
+            duplicates.forEach((el) => {
+                el.remove();
+            });
+        };
 
     }, [heroHeaderRef, heroSectionRef, animatedIconRef]);
 

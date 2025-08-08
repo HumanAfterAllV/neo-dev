@@ -16,10 +16,10 @@ export const NavOverlay = ({
 ): React.JSX.Element => {
 
     const menuItems: MenuItems[] = [
-        { label: "Inicio", href: "/" },
-        { label: "Proyectos", href: "/work" },
-        { label: "Blog", href: "/about" },
-        { label: "Contacto", href: "/contact" }
+        { label: "Inicio de todo", href: "/" },
+        { label: "Proyectos creativos", href: "/work" },
+        { label: "Quien es HumanDev?", href: "/about" },
+        { label: "Vamos a charlar", href: "/contact" },
     ];
 
     return (
@@ -34,7 +34,7 @@ export const NavOverlay = ({
                         key={index}
                     >
                         <p>
-                            <Link href={item.href}>{item.label}</Link>
+                            <Link className="font-barlow" href={item.href}>{item.label}</Link>
                         </p>
                     </div>
                 ))}

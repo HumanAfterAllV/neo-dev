@@ -14,14 +14,14 @@ export const HeaderLogo = ({
             <div className="logo">
                 <div className="logo-container">
                     <p className="mn">
-                        <Link href="/" className="text-white select-none">HumanDev ✦ Israel</Link>
+                        <Link href="/" className="text-white font-barlow select-none">HumanDev ✦ Israel</Link>
                     </p>
                 </div>
             </div>
             <div ref={menuToggleBtnRef} className="menu-toggle-btn ">
-                <div className="menu-toggle-btn-wrapper">
-                    <p ref={openLabelRef} className="mn open-label">Menu</p>
-                    <p ref={closeLabelRef} className="mn close-label">Cerrar</p>
+                <div className="menu-toggle-btn-wrapper font-barlow">
+                    <p ref={openLabelRef} className="open-label">Menu</p>
+                    <p ref={closeLabelRef} className="close-label">Cerrar</p>
                 </div>
             </div>
         </nav>
