@@ -50,7 +50,7 @@ body {
   color: var(--color-black);
 }
 
-@layer components {
+@layer base {
 
   .animated-copy [class^="line-"] {
     @apply [clip-path:polygon(0_0,100%_0,100%_100%,0%_100%)] block overflow-hidden m-0 p-0;

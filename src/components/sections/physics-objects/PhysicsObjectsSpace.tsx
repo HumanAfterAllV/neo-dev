@@ -33,11 +33,11 @@ export default function PhysicsObjectsSpace(): React.JSX.Element {
 
     const rect = container.getBoundingClientRect();
 
-    // 2) Límites (paredes)
+    // 2) Límites (paredes + suelo más alto)
     const thickness = 50;
     const floor = Matter.Bodies.rectangle(
       rect.width / 2,
-      rect.height -50 ,
+      rect.height - thickness / 2, // justo al ras del borde inferior
       rect.width,
       thickness,
       { isStatic: true }
@@ -69,7 +69,7 @@ export default function PhysicsObjectsSpace(): React.JSX.Element {
     elements.forEach((el, index) => {
       const element = el as HTMLElement;
 
-      // Importante: punto de partida dentro del contenedor
+      // Posición inicial aleatoria
       const x = Math.random() * (rect.width - width) + width / 2;
       const y = 60 + index * 40;
 
@@ -82,13 +82,38 @@ export default function PhysicsObjectsSpace(): React.JSX.Element {
       Matter.World.add(world, body);
       bodies.push({ element, body });
 
-      // Para alinear el DOM al centro como Matter:
+      // Alinear con el centro físico
       element.style.transform = `translate(-50%, -50%)`;
       element.style.left = "0px";
       element.style.top = "0px";
+      element.style.cursor = "grab";
     });
 
-    // 4) Loop: avanzar el motor y sincronizar DOM
+    // 4) MouseConstraint para arrastrar
+    const mouse = Matter.Mouse.create(container);
+    mouse.pixelRatio = window.devicePixelRatio || 1;
+
+    const mouseConstraint = Matter.MouseConstraint.create(engine, {
+      mouse,
+      constraint: {
+        stiffness: 0.2,
+        damping: 0.1,
+        render: { visible: false },
+      },
+    });
+
+    Matter.World.add(world, mouseConstraint);
+
+    Matter.Events.on(mouseConstraint, "startdrag", (evt) => {
+      const target = bodies.find((b) => b.body === evt.body)?.element;
+      if (target) target.style.cursor = "grabbing";
+    });
+    Matter.Events.on(mouseConstraint, "enddrag", (evt) => {
+      const target = bodies.find((b) => b.body === evt.body)?.element;
+      if (target) target.style.cursor = "grab";
+    });
+
+    // 5) Loop: motor + sincronización DOM
     let rafId = 0;
     let lastTime = performance.now();
 
@@ -96,12 +121,9 @@ export default function PhysicsObjectsSpace(): React.JSX.Element {
       const delta = time - lastTime;
       lastTime = time;
 
-      // Avanza la simulación (~60 FPS)
       Matter.Engine.update(engine, delta);
 
-      // Sincroniza DOM
       bodies.forEach(({ element, body }) => {
-        // body.position está en el centro del rectángulo
         element.style.transform = `translate(${body.position.x}px, ${body.position.y}px) rotate(${body.angle}rad) translate(-50%, -50%)`;
       });
 
@@ -110,9 +132,11 @@ export default function PhysicsObjectsSpace(): React.JSX.Element {
 
     rafId = requestAnimationFrame(tick);
 
-    // 5) Limpieza
+    // 6) Limpieza
     return () => {
       cancelAnimationFrame(rafId);
+      Matter.World.remove(world, mouseConstraint);
+      mouseConstraint.mouse.element = null as any;
       Matter.World.clear(world, false);
       Matter.Engine.clear(engine);
     };
@@ -128,11 +152,9 @@ export default function PhysicsObjectsSpace(): React.JSX.Element {
             style={{
               width: "120px",
               height: "60px",
-              // Punto base para que translate(-50%, -50%) funcione
               left: 0,
               top: 0,
               willChange: "transform",
-              pointerEvents: "none",
             }}
           >
             {obj.label}

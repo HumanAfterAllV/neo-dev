@@ -9,7 +9,7 @@ export default function LookSection(): React.JSX.Element {
                 <p><Link href="/work">Browse Full Bizarre</Link></p>
             </div>
             <div className="h-full w-full flex flex-col justify-center items-center">
-                <h1 className="text-4xl font-bold mb-4">Checa mis proyectos mas recientes</h1>
+                <h1 className="text-4xl font-bold mb-4">Checa mis blogs mas recientes</h1>
                 <div >
                     <h1 className="text-6xl">&#8595;</h1>
                 </div>

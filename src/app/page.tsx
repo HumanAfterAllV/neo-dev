@@ -4,6 +4,8 @@ import ContactButtonSection from "@/components/sections/contact-button/ContactBu
 import HeroSection from "@/components/sections/hero/HeroSection";
 import LookSection from "@/components/sections/look/LookSection";
 import PhysicsObjectsSpace from "@/components/sections/physics-objects/PhysicsObjectsSpace";
+import ProjectsScroll from "@/components/sections/projects/ProjectsScroll";
+import ProjectsSection from "@/components/sections/projects/ProjectsSection";
 import StickyTitle from "@/components/sections/sticky-title/StickyTitle";
 import TextAnimationSection from "@/components/sections/text-animation/TextAnimationSection";
 
@@ -12,6 +14,7 @@ export default function Page(): React.JSX.Element {
         <>
             <HeroSection/>
             <StickyTitle/>
+            <ProjectsScroll/>
             <ContactButtonSection/>
             <Footer/>
         </>
