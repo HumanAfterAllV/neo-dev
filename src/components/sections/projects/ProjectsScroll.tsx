@@ -17,6 +17,7 @@ type ProjectsList = {
     link: string;
     src: string;
     category: Category;
+    hashtag?: string;
 }
 export default function ProjectsScroll(): React.JSX.Element {
     
@@ -63,8 +64,8 @@ export default function ProjectsScroll(): React.JSX.Element {
     return(
         <>
             <section ref={stickyProjectsHeaderRef} className="relative w-screen h-svh p-[2em] flex justify-center items-center text-center overflow-hidden">
-                <AnimatedCopy tag="h1" className="opacity-10 leading-1 text-9xl uppercase font-barlow font-semibold" animatedScroll={true}>
-                    proyectos
+                <AnimatedCopy tag="h1" className="opacity-10 leading-1 text-9xl font-grotesk font-semibold" animatedScroll={true}>
+                    Proyectos
                 </AnimatedCopy>
             </section>
             <section ref={homeProjectsRef} className="w-full p-[8em]">
@@ -75,15 +76,19 @@ export default function ProjectsScroll(): React.JSX.Element {
                                 {`${String(index + 1).padStart(2, "0")}`} - {`${String(projectsList.length).padStart(2, "0")}`}
                             </p>
                             <h3 className="font-semibold text-[4vw] tracking-tight leading-[3.4vw]">{item.label}</h3>
-                            <div>
-                                <Image
+                            <div className="flex flex-col justify-between items-center w-2xl h-[350px] bg-black rounded-[60px]">
+                                <Image 
+                                    src={item.src} 
+                                    alt={item.label} 
+                                    height={500} 
                                     width={500}
-                                    height={500}
-                                    src={item.src}
-                                    alt={item.label}
+                                    className="rounded-4xl pt-2.5" 
                                 />
                             </div>
-                            <h4 className="font-semibold text-[2vw] tracking-tighter leading-[2vw]">{item.category}</h4>
+                            <div>
+
+                            </div>
+                            <div className="font-semibold text-[2vw] tracking-tighter leading-[2vw]">{item.category}</div>
                         </Link>
                     ))}
                 </div>

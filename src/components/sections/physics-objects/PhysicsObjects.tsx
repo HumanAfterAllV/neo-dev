@@ -10,10 +10,12 @@
 
 import { useEffect, useRef } from "react"
 import * as Matter from "matter-js";
+import AnimatedCopy from "@/components/elements/AnimatedCopy";
 
 type PhysicsObject = {
     label: string;
     bgColor: string;
+    textColor: string;
 }
 
 export default function PhysicsObjects(): React.JSX.Element {
@@ -25,21 +27,26 @@ export default function PhysicsObjects(): React.JSX.Element {
         if (!container) return;
         
         //* Engine + World
-        const engine = Matter.Engine.create();
+        const engine = Matter.Engine.create({ enableSleeping: true });
         const world = engine.world;
-        engine.gravity.y = 1;
 
-        engine.positionIterations = 10;   // default 6
-        engine.velocityIterations = 10;   // default 6
-        engine.constraintIterations = 4;  // default 2
-        (engine as any).enableSleeping = true; // activar "sleep" de cuerpos
+        engine.gravity.y = 1;
+        engine.positionIterations = 10;   //* default 6
+        engine.velocityIterations = 10;   //* default 6
+        engine.constraintIterations = 4;  //* default 2
+        (engine as any).enableSleeping = true; //* activar "sleep" de cuerpos
         
         let rect = container.getBoundingClientRect();
         
         //* Límites (paredes + suelo más alto)
-        const thickness: number = 100;
-        const over = 2 * thickness; // sobre-largo
+        const thickness: number = 140;
+        const over = 2 * thickness; //* sobre-largo
 
+        /* let floor: Matter.Body;
+        let left: Matter.Body;
+        let right: Matter.Body;
+        let ceiling: Matter.Body;
+         */
         const floor = Matter.Bodies.rectangle(
             rect.width / 2,
             rect.height - thickness / 2, //* justo al ras del borde inferior
@@ -75,8 +82,8 @@ export default function PhysicsObjects(): React.JSX.Element {
 
         //* Crea los cuerpos para cada elemento
         const elements = Array.from(container.querySelectorAll(".physics-object"));
-        const baseW: number = 150; //* Tamaño de los objetos
-        const baseH: number = 150; //* Tamaño de los objetos
+        const baseW: number = 105; //* Tamaño de los objetos
+        const baseH: number = 105; //* Tamaño de los objetos
         
         const bodies: { element: HTMLElement; body: Matter.Body }[] = [];
         
@@ -210,30 +217,37 @@ export default function PhysicsObjects(): React.JSX.Element {
     },[])
 
     const physicsObjects: PhysicsObject[] = [
-        { label: "JavaScript", bgColor: "bg-yellow-500" },
-        { label: "TypeScript", bgColor: "bg-blue-500" },
-        { label: "React", bgColor: "bg-blue-500" },
-        { label: "Next.js", bgColor: "bg-black" },
-        { label: ".NET", bgColor: "bg-orange-500" },
-        { label: "Python", bgColor: "bg-blue-500" },
-        { label: "PostgreSQL", bgColor: "bg-orange-500" },
-        { label: "Express.js", bgColor: "bg-black" },
-        { label: "SQL", bgColor: "bg-yellow-500" },
-        { label: "GSAP", bgColor: "bg-black" },
-        { label: "Tailwind", bgColor: "bg-yellow-500" }
+        { label: "JavaScript", bgColor: "bg-yellow-500" , textColor: "text-black"},
+        { label: "TypeScript", bgColor: "bg-purple-500" , textColor: "text-black"},
+        { label: "React", bgColor: "bg-yellow-500" , textColor: "text-black"},
+        { label: "Next.js", bgColor: "bg-purple-500" , textColor: "text-black"},
+        { label: ".NET", bgColor: "bg-yellow-500" , textColor: "text-black"},
+        { label: "Python", bgColor: "bg-purple-500" , textColor: "text-black"},
+        { label: "PostgreSQL", bgColor: "bg-yellow-500" , textColor: "text-black"},
+        { label: "Express.js", bgColor: "bg-purple-500" , textColor: "text-black"},
+        { label: "SQL", bgColor: "bg-yellow-500" , textColor: "text-black"},
+        { label: "GSAP", bgColor: "bg-purple-500" , textColor: "text-black"},
+        { label: "Tailwind", bgColor: "bg-yellow-500" , textColor: "text-black"}
 
     ];
 
     return(
-        <section className="relative w-screen h-svh bg-bg overflow-hidden">
+        <section className="relative w-full h-full rounded-3xl">
+            <div className="absolute left-0 bottom-0  font-grotesk font-normal text-center">
+                <AnimatedCopy tag="h1" className="lg:text-[8vw] sm:text-[10vw] text-black">
+                    2025
+                </AnimatedCopy>
+            </div>
+            <div className="absolute left-1/2 top-1/ -translate-x-1/2 font-grotesk font-black text-center">
+            </div>
             <div ref={containerRef} className="relative w-full h-full">
                 {physicsObjects.map((item: PhysicsObject, index: number) => (
                     <div 
                         key={index} 
-                        className={`physics-object absolute text-black text-xl font-grotesk uppercase font-bold ${item.bgColor} px-6 py-6 rounded-4xl select-none flex text-center justify-center items-center`}
+                        className={`physics-object absolute ${item.textColor} text-xl font-barlow uppercase font-semibold ${item.bgColor} px-6 py-6 rounded-4xl select-none flex text-center justify-center items-center`}
                         style={{
-                            width: "200px",
-                            height: "200px",
+                            width: "100px",
+                            height: "100px",
                             left: 0,
                             top: 0,
                             willChange: "transform",

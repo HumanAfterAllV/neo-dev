@@ -2,7 +2,7 @@ import { Link } from "lucide-react";
 
 export default function LookSection(): React.JSX.Element {
     return (
-        <section className="h-[800px] relative w-full">
+        <section className="h-[800px] bg-bg relative w-full">
             <div className="absolute top-0 left-0 w-full px-22 flex justify-between items-center font-barlow text-sm text-black">
                 <p>Visual Vault [ 10 ]</p>
                 <p>///////////////////</p>
@@ -16,4 +16,4 @@ export default function LookSection(): React.JSX.Element {
             </div>
         </section>
     )
-}
+}   

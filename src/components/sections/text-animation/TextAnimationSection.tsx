@@ -195,7 +195,7 @@ export default function TextAnimationSection(): React.JSX.Element {
                     </div>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full px-12">
-                    <div className="flex justify-between px-10 font-barlow text-sm text-black">
+                    <div className="flex justify-between px-10 font-barlow text-md text-black">
                         <p>
                             <span>&#9654;</span> Specs loaded
                         </p>

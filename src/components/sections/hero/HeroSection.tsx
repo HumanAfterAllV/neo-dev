@@ -32,15 +32,18 @@ export default function HeroSection(): React.JSX.Element {
 
             <section ref={heroSectionRef} className="hero hero-section">
                 <div ref={heroHeaderRef} className="hero-header">
-                    <h1 className="font-black font-barlow hero-title uppercase leading-[1] lg:text-[13vw] sm:text-[12vw] text-center">
-                        FULLSTACK
+                    <h1 className="font-black font-grotesk hero-title leading-[1] lg:text-[6vw] sm:text-[12vw]">
+                        Fullstack con pasión
                     </h1>
+                    <p className="font-black leading-1 lg:text-[1.5vw] sm:text-[4vw]">
+                        Lee mi blog y aprende el camino del jr.
+                    </p>
                 </div>
                 <div ref={animatedIconsRef} className="animated-icons">
                     {[1, 2, 3, 4, 5].map((i) => (
                         <div key={i} className={`animated-icon icon-${i}`}>
                             <Image
-                                src={`/icons/icon_${i}.png`}
+                                src={`/img/icon_${i}.png`}
                                 alt={`Icon ${i}`}
                                 width={2000}
                                 height={2000}
@@ -58,7 +61,7 @@ export default function HeroSection(): React.JSX.Element {
                     <div className="placeholder-icon"/>
                     <span className="text-segment">para el desarrollo</span>
                     <div className="placeholder-icon"/>
-                    <span className="text-segment">web moderno.</span>
+                    <span className="text-segment">web moderno</span>
                     <div className="placeholder-icon"/>
                     <span className="text-segment">.</span>
                 </h1>

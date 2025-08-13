@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { DM_Mono, Barlow_Condensed, Host_Grotesk } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
-import Header from "@/components/layout/header/Header";
 
 const barlowFont = Barlow_Condensed({
   subsets: ["latin"],
@@ -43,7 +42,6 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <LenisProvider/>
-        <Header/>
         {children}
       </body>
     </html>

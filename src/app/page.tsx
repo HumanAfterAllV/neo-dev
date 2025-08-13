@@ -1,6 +1,7 @@
 import Footer from "@/components/layout/footer/Footer";
 import CardsSection from "@/components/sections/cards/CardsSection";
 import ContactButtonSection from "@/components/sections/contact-button/ContactButtonSection";
+import ContactSection from "@/components/sections/contact/ContactSection";
 import HeroSection from "@/components/sections/hero/HeroSection";
 import LookSection from "@/components/sections/look/LookSection";
 import PhysicsObjectsSpace from "@/components/sections/physics-objects/PhysicsObjectsSpace";
@@ -14,8 +15,8 @@ export default function Page(): React.JSX.Element {
         <>
             <HeroSection/>
             <StickyTitle/>
-            <ProjectsScroll/>
-            <ContactButtonSection/>
+            
+            <ContactSection/>
             <Footer/>
         </>
     )
