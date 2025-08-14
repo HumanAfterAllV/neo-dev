@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import HeroScroll from "./HeroScroll";
+import Button from "@/components/elements/Button";
 
 export default function HeroSection(): React.JSX.Element {
     const animatedIconsRef = useRef<HTMLDivElement>(null)
@@ -36,8 +37,11 @@ export default function HeroSection(): React.JSX.Element {
                         Fullstack con pasión
                     </h1>
                     <p className="font-black leading-1 lg:text-[1.5vw] sm:text-[4vw]">
-                        Lee mi blog y aprende el camino del jr.
+                        Encaminate conmigo y dejemos huella como jr´s
                     </p>
+                    <div className="flex justify-center items-center">
+                        <Button label="Conóceme"/>
+                    </div>
                 </div>
                 <div ref={animatedIconsRef} className="animated-icons">
                     {[1, 2, 3, 4, 5].map((i) => (
