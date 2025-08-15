@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TextAnimationSection(): React.JSX.Element {
+export default function TextAnimation(): React.JSX.Element {
 
     const hasAnimatedRef = useRef<boolean>(false);
     

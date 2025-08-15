@@ -3,13 +3,10 @@
  * 
  */
 
-"use client";
-
-import { useState, useEffect } from "react";
 
 import AnimatedCopy from "@/components/elements/AnimatedCopy";
-import PhysicsObjects from "../physics-objects/PhysicsObjects";
-import TextAnimationSection from "../text-animation/TextAnimationSection";
+import PhysicsObjects from "@/components/elements/PhysicsObjects";
+import TextAnimation from "@/components/elements/TextAnimation";
 
 export default function AboutSection(): React.JSX.Element{
     
@@ -39,7 +36,7 @@ export default function AboutSection(): React.JSX.Element{
                     </div>
                 </div>
             </section>
-            <TextAnimationSection/>
+            <TextAnimation/>
         </>
     )
 }

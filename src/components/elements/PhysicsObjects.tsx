@@ -49,7 +49,7 @@ export default function PhysicsObjects(): React.JSX.Element {
          */
         const floor = Matter.Bodies.rectangle(
             rect.width / 2,
-            rect.height - thickness / 2, //* justo al ras del borde inferior
+            rect.height -  2, //* justo al ras del borde inferior
             rect.width + over,
             thickness,
             { isStatic: true }
@@ -62,7 +62,7 @@ export default function PhysicsObjects(): React.JSX.Element {
             { isStatic: true }
         );
         const right = Matter.Bodies.rectangle( //* pared derecha
-            rect.width + thickness / 2,
+            rect.width + thickness / 3,
             rect.height / 2,
             thickness,
             rect.height + over,
@@ -82,8 +82,8 @@ export default function PhysicsObjects(): React.JSX.Element {
 
         //* Crea los cuerpos para cada elemento
         const elements = Array.from(container.querySelectorAll(".physics-object"));
-        const baseW: number = 105; //* Tamaño de los objetos
-        const baseH: number = 105; //* Tamaño de los objetos
+        const baseW: number = 50; //* Tamaño de los objetos
+        const baseH: number = 50; //* Tamaño de los objetos
         
         const bodies: { element: HTMLElement; body: Matter.Body }[] = [];
         
@@ -244,10 +244,10 @@ export default function PhysicsObjects(): React.JSX.Element {
                 {physicsObjects.map((item: PhysicsObject, index: number) => (
                     <div 
                         key={index} 
-                        className={`physics-object absolute ${item.textColor} text-xl font-barlow uppercase font-semibold ${item.bgColor} px-6 py-6 rounded-4xl select-none flex text-center justify-center items-center`}
+                        className={`physics-object absolute ${item.textColor} text-xl font-barlow uppercase font-semibold ${item.bgColor} px-6 py-6 rounded-2xl select-none flex text-center justify-center items-center`}
                         style={{
-                            width: "100px",
-                            height: "100px",
+                            width: "50px",
+                            height: "50px",
                             left: 0,
                             top: 0,
                             willChange: "transform",
