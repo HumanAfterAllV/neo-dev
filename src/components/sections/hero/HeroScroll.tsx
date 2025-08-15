@@ -333,7 +333,6 @@ export default function HeroScroll({
             // Eliminar ScrollTriggers
             
             triggers.forEach(trigger => trigger.kill());
-            ScrollTrigger.refresh();
 
             // Eliminar íconos duplicados si quedan en el DOM
             const duplicates = document.querySelectorAll(".duplicate-icon");

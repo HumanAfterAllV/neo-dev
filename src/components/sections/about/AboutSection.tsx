@@ -32,7 +32,7 @@ export default function AboutSection(): React.JSX.Element{
                 </AnimatedCopy>
             </div>
             <div className="hidden md:block">
-                <div className="relative w-full h-[70svh] lg:h-[90svh] rounded-2xl md:rounded-3xl overflow-hidden bg-green-500 border-6 border-b-[25px] border-r-[25px]">
+                <div className="relative w-full mt-10 h-[70svh] lg:h-[90svh] rounded-2xl md:rounded-3xl overflow-hidden bg-green-500 border-6 border-b-[25px] border-r-[25px]">
                     <PhysicsObjects />
                 </div>
             </div>

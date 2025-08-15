@@ -4,6 +4,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import Header from "@/components/layout/header/Header";
 import StickyHeader from "@/components/layout/header/StickyHeader";
+import GsapRouteAirbag from "@/components/GsapRouteAirbag";
 
 const barlowFont = Barlow_Condensed({
   subsets: ["latin"],
@@ -42,9 +43,9 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`min-h-screen overflow-hidden ${barlowFont.variable} ${dmMonoFont.variable} ${hostFont.variable}`}
-        suppressHydrationWarning={true}
       >
         <LenisProvider/>
+        <GsapRouteAirbag/>
         <Header/>
         {children}
       </body>
