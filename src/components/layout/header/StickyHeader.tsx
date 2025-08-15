@@ -57,6 +57,8 @@ export default function StickyHeader(): React.JSX.Element{
                         onClick={() => setIsOpen(!isOpen)}
                         className="p-3"
                         aria-label="Toggle Menu"
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-menu"
                     >
                         <Image src={isOpen ? "/icon/close.svg" : "/icon/menu.svg" } height={24} width={24} alt={isOpen ? "Close" :  "Menu"}/>
                     </button>
@@ -66,23 +68,21 @@ export default function StickyHeader(): React.JSX.Element{
             {isOpen && (
                 <>
                     <div className="fixed inset-0 md:hidden" onClick={() => setIsOpen(false)}/>
-                    <div className="fixed top-20 left-4 right-4 z-50 md:hidden">
-                        <nav className="overflow-hidden rounded-2xl">
-                            <ul className="py-2">
-                                {menuItems.map((item: MenuItems, index: number) => (
-                                    <li key={index}>
-                                        <Link
-                                            className="flex items-center px-6 py-4 text-base font-medium"
-                                            href={item.link}
-                                            onClick={() => handleItemClick(item.label)}
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    </div>|
+                    <nav className="fixed top-20 left-4 right-4 z-50 md:hidden overflow-hidden rounded-2xl brutalism-border bg-light">
+                        <ul className="py-2">
+                            {menuItems.map((item: MenuItems, index: number) => (
+                                <li key={index}>
+                                    <Link
+                                        className="flex items-center px-6 py-4 text-base font-medium"
+                                        href={item.link}
+                                        onClick={() => handleItemClick(item.label)}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
                 </>
             )}
         </>

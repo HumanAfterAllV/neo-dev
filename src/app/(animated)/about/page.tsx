@@ -4,7 +4,9 @@ import AboutSection from "@/components/sections/about/AboutSection";
 export default function Page(): React.JSX.Element {
     return(
         <>
-            <AboutSection/>
+            <div id="hero-pin-shell" className="relative">
+                <AboutSection/>                    
+            </div>
         </>
     )
 }
